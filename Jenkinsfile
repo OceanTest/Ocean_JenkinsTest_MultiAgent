@@ -31,10 +31,10 @@ stage('Test') {
         node('slave1') {
             echo "${params.Greeting} World!"
         }
-    },
-    linux2: {
-        node('Ruby_Linux_Node') {
-            echo "${params.Greeting} World!"
-        }
-    }
+    },
+    linux2: {
+        node('Ruby_Linux_Node') {
+            echo "${params.Greeting} World!"
+        }
+    }
 }
