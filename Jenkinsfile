@@ -24,17 +24,18 @@ node('slave1'){
         // Run the program
         sh script:"ssh root@10.25.132.123 'cd /home/workspace;python3 ocean.py'"
     }
-}
-
-stage('Test') {
-    parallel linux1: {
-        node('slave1') {
-            echo "${params.Greeting} World!"
-        }
-    },
-    linux2: {
-        node('Ruby_Linux_Node') {
-            echo "${params.Greeting} World!"
+    stage('Test') {
+        parallel linux1: {
+            node('slave1') {
+                echo "${params.Greeting} World!"
+            }
+        },
+        linux2: {
+            node('Ruby_Linux_Node') {
+                echo "${params.Greeting} World!"
+            }
         }
     }
 }
+
+
