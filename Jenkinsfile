@@ -1,6 +1,11 @@
 def testnode1 = env.testnode1
 def testnode2 = env.testnode2
-def Nodelist = [testnode1, testnode2]
+def Nodelist = [
+    [name : testnode1], 
+    [name : testnode2]
+]
+
+
 
 node('slave1'){
     // Mark the code checkout 'stage'....
@@ -12,7 +17,7 @@ node('slave1'){
     // Mark the code GetParameter 'stage'....
     stage('GetParameterviaEnvironment'){
     // Run the program
-        Nodelist.each{Node -> println "\r\n Test node is " + Node}
+        Nodelist.each{Node -> println "\r\n Test node is " + "$Node.name"}
     }
     
     stage('GetParameterwithBuild'){
@@ -20,10 +25,6 @@ node('slave1'){
         echo "${params.Greeting} World!"          
     }
     // Mark the code Run 'stage'....
-    stage('Run'){
-        // Run the program
-        sh script:"ssh root@10.25.132.123 'cd /home/workspace;python3 ocean.py'"
-    }    
 }
 
 stage('Test') {
@@ -32,8 +33,8 @@ stage('Test') {
             echo "${params.Greeting} World!"
         }
     },
-    linux2: {
-        node('Ruby_Linux_Node') {
+    windows: {
+        node('ocean_windows_testnode') {
             echo "${params.Greeting} World!"
         }
     }
