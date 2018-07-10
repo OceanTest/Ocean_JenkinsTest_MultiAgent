@@ -25,9 +25,10 @@ node('slave1'){
         echo "${params.Greeting} World!"          
     }
     // Mark the code Run 'stage'....
-}
-
-stage('Run'){
+    stage('Run'){
         // Run the program
         sh script:"ssh root@10.18.134.106 'cd /home/ocean/ReadRetryCount;python rdrery_test.py'"
+    }
 }
+
+
