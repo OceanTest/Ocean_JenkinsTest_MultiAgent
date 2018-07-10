@@ -14,9 +14,8 @@ node('slave1'){
     // Mark the code GetParameter 'stage'....
     stage('GetParameterviaEnvironment'){
     // Run the program
-        Nodelist.each{Node -> {
-                echo "Node name is" + Node
-            }
+        Nodelist.each{Node -> 
+                echo "Node name is" + Node            
         }
     }
     
