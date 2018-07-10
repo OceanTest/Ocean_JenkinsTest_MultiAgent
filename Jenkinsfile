@@ -11,7 +11,7 @@ node('slave1'){
     // Mark the code checkout 'stage'....
     stage('Checkout'){
         // Get some code from a GitHub repository
-        git([url: 'https://github.com/OceanTest/Ocean_JenkinsTest.git', branch: 'master'])
+        git([url: 'https://github.com/OceanTest/Ocean_JenkinsTest_MultiAgent.git', branch: 'master'])
         
     }
     // Mark the code GetParameter 'stage'....
