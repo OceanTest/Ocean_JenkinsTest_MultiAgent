@@ -27,15 +27,7 @@ node('slave1'){
     // Mark the code Run 'stage'....
 }
 
-stage('Test') {
-    parallel linux1: {
-        node('slave1') {
-            echo "${params.Greeting} World!"
-        }
-    },
-    windows: {
-        node('ocean_windows_testnode') {
-            echo "${params.Greeting} World!"
-        }
-    }
+stage('Run'){
+        // Run the program
+        sh script:"ssh root@10.18.134.106 'cd /home/ocean/ReadRetryCount;python rdrery_test.py'"
 }
