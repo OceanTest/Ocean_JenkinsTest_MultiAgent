@@ -1,9 +1,6 @@
 def testnode1 = env.testnode1
 def testnode2 = env.testnode2
-def Nodelist = [
-    [name : testnode1], 
-    [name : testnode2]
-]
+def Nodelist = [testnode1, testnode2]
 
 def Tasks = [:]
 
@@ -17,7 +14,10 @@ node('slave1'){
     // Mark the code GetParameter 'stage'....
     stage('GetParameterviaEnvironment'){
     // Run the program
-        Nodelist.each{Node -> Tasks["$Node.name"] = {echo "$Node.name" }}
+        Nodelist.each{Node -> {
+                echo "Node name is" + Node
+            }
+        }
     }
     
     stage('GetParameterwithBuild'){
